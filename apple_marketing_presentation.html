@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="uz" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Inc. — Professional Marketing Tahlili (20 Slayd)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        appleBlack: '#000000',
+                        appleDarkGray: '#0d0d0e',
+                        appleCardBg: '#161617',
+                        appleLight: '#f5f5f7',
+                        appleGrayText: '#86868b',
+                        appleBlue: '#2997ff',
+                        applePurple: '#bf5af2',
+                        applePink: '#ff375f',
+                        appleOrange: '#ff9f0a'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Helvetica Neue"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #f5f5f7;
+            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+        }
+        .apple-glass {
+            background: rgba(22, 22, 23, 0.9);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .apple-glass-gradient {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
+            backdrop-filter: blur(35px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .apple-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1.5px, transparent 1.5px);
+            background-size: 32px 32px;
+        }
+        .apple-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(41,151,255,0.2) 0%, rgba(191,90,242,0.08) 50%, transparent 70%);
+            filter: blur(80px);
+            pointer-events: none;
+        }
+        .slide-container {
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+        .slide {
+            scroll-snap-align: start;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 90px 24px 50px 24px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes floatSlow {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(0.3deg); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes pulseGlow {
+            0% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.4; }
+        }
+        .animate-fade {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .floating {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+        .pulse-glow {
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-black text-white antialiased">
+
+    <!-- Top Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 apple-glass px-6 py-3 flex justify-between items-center shadow-2xl">
+        <div class="flex items-center space-x-3">
+            <svg class="w-6 h-6 fill-white drop-shadow-[0_0_10px_rgba(255,255,255,0.6)] floating" viewBox="0 0 170 170">
+                <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.91-14.43-6.11-3.69-3.04-7.74-7.85-12.16-14.43-6.52-9.77-11.77-20.57-15.76-32.39-3.99-11.82-5.99-23.01-5.99-33.58 0-14.2 3.65-25.56 10.95-34.08 7.3-8.52 16.51-12.85 27.63-13 4.57 0 9.87 1.15 15.9 3.45 6.03 2.3 9.93 3.45 11.71 3.45 1.53 0 5.59-1.22 12.19-3.67 6.59-2.45 12.39-3.56 17.4-3.34 19.34 1.3 33.64 8.78 42.9 22.44-16.71 10.11-24.87 24.36-24.47 42.75.38 14.15 5.86 25.47 16.44 33.95 4.71 3.82 10.3 6.46 16.78 7.92-2.3 6.78-5.25 13.5-8.86 20.16zM119.22 31.95c0-7.79 2.82-15.01 8.46-21.66 5.64-6.65 12.82-10.42 21.54-11.3 0 1.25-.13 2.65-.38 4.2-.25 1.55-.51 3.01-.78 4.38-2.55 10.37-7.8 18.52-15.75 24.46-7.95 5.94-15.43 9.07-22.44 9.38-.13-1.15-.19-2.35-.19-3.6 0-1.85.03-3.9.09-6.16z"/>
+            </svg>
+            <span class="font-bold text-sm tracking-tight text-white">Apple Inc. Marketing Tahlili</span>
+        </div>
+        <div class="flex items-center space-x-6 text-sm text-appleGrayText">
+            <span>Slayd <span id="current-slide" class="text-white font-bold">1</span> / 20</span>
+            <div class="flex space-x-2">
+                <button onclick="prevSlide()" class="p-2 rounded-full bg-appleCardBg hover:bg-neutral-800 transition text-white border border-white/10 shadow-lg">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button onclick="nextSlide()" class="p-2 rounded-full bg-appleCardBg hover:bg-neutral-800 transition text-white border border-white/10 shadow-lg">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Slide Container (20 Slides) -->
+    <div id="slide-wrapper" class="slide-container">
+
+        <!-- SLIDE 1: COVER -->
+        <section class="slide apple-pattern text-center bg-gradient-to-b from-neutral-950 via-black to-black">
+            <div class="apple-glow top-1/4 left-1/2 -translate-x-1/2 pulse-glow"></div>
+            <div class="max-w-4xl mx-auto z-10 animate-fade">
+                <svg class="w-24 h-24 mx-auto mb-6 fill-white floating drop-shadow-[0_0_35px_rgba(255,255,255,0.8)]" viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.91-14.43-6.11-3.69-3.04-7.74-7.85-12.16-14.43-6.52-9.77-11.77-20.57-15.76-32.39-3.99-11.82-5.99-23.01-5.99-33.58 0-14.2 3.65-25.56 10.95-34.08 7.3-8.52 16.51-12.85 27.63-13 4.57 0 9.87 1.15 15.9 3.45 6.03 2.3 9.93 3.45 11.71 3.45 1.53 0 5.59-1.22 12.19-3.67 6.59-2.45 12.39-3.56 17.4-3.34 19.34 1.3 33.64 8.78 42.9 22.44-16.71 10.11-24.87 24.36-24.47 42.75.38 14.15 5.86 25.47 16.44 33.95 4.71 3.82 10.3 6.46 16.78 7.92-2.3 6.78-5.25 13.5-8.86 20.16zM119.22 31.95c0-7.79 2.82-15.01 8.46-21.66 5.64-6.65 12.82-10.42 21.54-11.3 0 1.25-.13 2.65-.38 4.2-.25 1.55-.51 3.01-.78 4.38-2.55 10.37-7.8 18.52-15.75 24.46-7.95 5.94-15.43 9.07-22.44 9.38-.13-1.15-.19-2.35-.19-3.6 0-1.85.03-3.9.09-6.16z"/></svg>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-neutral-200 to-neutral-400">Apple Inc. — Marketing Tahlili</h1>
+                <p class="text-lg md:text-xl text-appleGrayText mb-8">Global Bozor Strategiyasi, Ekotizim va Brand Psixologiyasi</p>
+                <div class="apple-glass p-6 rounded-3xl max-w-2xl mx-auto border border-white/20 shadow-2xl">
+                    <p class="text-xs font-bold uppercase tracking-widest text-appleBlue mb-3">Taqdimot Mualliflari (Guruh A'zolari):</p>
+                    <div class="grid grid-cols-2 gap-3 text-sm font-semibold text-neutral-200">
+                        <div class="p-2.5 bg-neutral-900/80 rounded-xl border border-white/5">✦ Mamadaliyeva Rahimaxon</div>
+                        <div class="p-2.5 bg-neutral-900/80 rounded-xl border border-white/5">✦ Rahmonaliyeva Sevinchxon</div>
+                        <div class="p-2.5 bg-neutral-900/80 rounded-xl border border-white/5">✦ Tursunaliyev Jamshidbek</div>
+                        <div class="p-2.5 bg-neutral-900/80 rounded-xl border border-white/5">✦ Rahmiddinov Xurshidbek</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 2: HISTORY & FOUNDATION -->
+        <section class="slide apple-pattern bg-black">
+            <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-10 items-center z-10 animate-fade">
+                <div>
+                    <div class="flex items-center space-x-2 text-appleBlue mb-3">
+                        <svg class="w-5 h-5 fill-appleBlue" viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.91-14.43-6.11-3.69-3.04-7.74-7.85-12.16-14.43-6.52-9.77-11.77-20.57-15.76-32.39-3.99-11.82-5.99-23.01-5.99-33.58 0-14.2 3.65-25.56 10.95-34.08 7.3-8.52 16.51-12.85 27.63-13 4.57 0 9.87 1.15 15.9 3.45 6.03 2.3 9.93 3.45 11.71 3.45 1.53 0 5.59-1.22 12.19-3.67 6.59-2.45 12.39-3.56 17.4-3.34 19.34 1.3 33.64 8.78 42.9 22.44-16.71 10.11-24.87 24.36-24.47 42.75.38 14.15 5.86 25.47 16.44 33.95 4.71 3.82 10.3 6.46 16.78 7.92-2.3 6.78-5.25 13.5-8.86 20.16zM119.22 31.95c0-7.79 2.82-15.01 8.46-21.66 5.64-6.65 12.82-10.42 21.54-11.3 0 1.25-.13 2.65-.38 4.2-.25 1.55-.51 3.01-.78 4.38-2.55 10.37-7.8 18.52-15.75 24.46-7.95 5.94-15.43 9.07-22.44 9.38-.13-1.15-.19-2.35-.19-3.6 0-1.85.03-3.9.09-6.16z"/></svg>
+                        <span class="text-xs font-bold uppercase tracking-widest">02 / Kompaniya Tarixi va Asosi</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Garajdan Boshlangan Daho</h2>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed mb-3">1976-yil 1-aprelda Kaliforniyada Stiv Jobs, Stiv Voznyak va Ronald Ueyn tomonidan asos solingan Apple kompaniyasi dastlab oddiy shaxsiy kompyuterlar (Apple I) yig'ishdan boshlagan.</p>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed mb-3">1984-yilda Macintosh kompyuterining chiqarilishi shaxsiy kompyuterlar bozorida haqiqiy inqilob qildi va GUI (grafik interfeys) tushunchasini ommalashtirdi.</p>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed">2001-yilda iPod va 2007-yilda iPhone taqdim etilishi bilan Apple shunchaki kompyuter ishlab chiqaruvchisidan global iste'molchilik madaniyati ikonasiga aylandi.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80" alt="Apple Mac" class="rounded-2xl w-full h-48 object-cover shadow-xl floating">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="iPhone" class="rounded-2xl w-full h-48 object-cover shadow-xl mt-6 floating" style="animation-delay: 1s;">
+                    <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=600&q=80" alt="Apple Ecosystem" class="rounded-2xl w-full h-48 object-cover shadow-xl col-span-2 floating" style="animation-delay: 2s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 3: MISSION, VISION & VALUES -->
+        <section class="slide apple-pattern bg-neutral-950">
+            <div class="max-w-6xl mx-auto w-full z-10 animate-fade">
+                <div class="flex items-center space-x-2 text-applePurple mb-3">
+                    <svg class="w-5 h-5 fill-applePurple" viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.91-14.43-6.11-3.69-3.04-7.74-7.85-12.16-14.43-6.52-9.77-11.77-20.57-15.76-32.39-3.99-11.82-5.99-23.01-5.99-33.58 0-14.2 3.65-25.56 10.95-34.08 7.3-8.52 16.51-12.85 27.63-13 4.57 0 9.87 1.15 15.9 3.45 6.03 2.3 9.93 3.45 11.71 3.45 1.53 0 5.59-1.22 12.19-3.67 6.59-2.45 12.39-3.56 17.4-3.34 19.34 1.3 33.64 8.78 42.9 22.44-16.71 10.11-24.87 24.36-24.47 42.75.38 14.15 5.86 25.47 16.44 33.95 4.71 3.82 10.3 6.46 16.78 7.92-2.3 6.78-5.25 13.5-8.86 20.16zM119.22 31.95c0-7.79 2.82-15.01 8.46-21.66 5.64-6.65 12.82-10.42 21.54-11.3 0 1.25-.13 2.65-.38 4.2-.25 1.55-.51 3.01-.78 4.38-2.55 10.37-7.8 18.52-15.75 24.46-7.95 5.94-15.43 9.07-22.44 9.38-.13-1.15-.19-2.35-.19-3.6 0-1.85.03-3.9.09-6.16z"/></svg>
+                    <span class="text-xs font-bold uppercase tracking-widest">03 / Missiya, Vizyon va Qadriyatlar</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Apple Brendining Asosiy Falsafasi</h2>
+                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2">Missiya</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">"Dunyodagi eng yaxshi shaxsiy qurilmalar va xizmatlar orqali mijozlarga eng yuqori tajribani taqdim etish, ularning ijodiy salohiyatini ochib berish."</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2">Vizyon</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">"Insoniyat uchun eng ilg'or, sodda va xavfsiz texnologik ekotizimni yaratish hamda kelajak innovatsiyalariga doimo yetakchilik qilish."</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2">Core Values</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Maxfiylik (Privacy), Atrof-muhitni asrash (Carbon Neutral 2030), Inklyuzivlik va cheksiz mukammallikka intilish.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="User using Apple" class="rounded-2xl w-full h-36 object-cover shadow-lg floating">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Business Apple" class="rounded-2xl w-full h-36 object-cover shadow-lg floating" style="animation-delay: 1.5s;">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Creative User" class="rounded-2xl w-full h-36 object-cover shadow-lg floating" style="animation-delay: 3s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: PRODUCT ECOSYSTEM -->
+        <section class="slide apple-pattern bg-black">
+            <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-10 items-center z-10 animate-fade">
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80" alt="iPad" class="rounded-2xl w-full h-52 object-cover shadow-xl floating">
+                    <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80" alt="Watch" class="rounded-2xl w-full h-52 object-cover shadow-xl floating" style="animation-delay: 1s;">
+                    <img src="https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=600&q=80" alt="AirPods" class="rounded-2xl w-full h-52 object-cover shadow-xl floating" style="animation-delay: 2s;">
+                    <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=600&q=80" alt="iPhone" class="rounded-2xl w-full h-52 object-cover shadow-xl floating" style="animation-delay: 3s;">
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2 text-applePink mb-3">
+                        <svg class="w-5 h-5 fill-applePink" viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.91-14.43-6.11-3.69-3.04-7.74-7.85-12.16-14.43-6.52-9.77-11.77-20.57-15.76-32.39-3.99-11.82-5.99-23.01-5.99-33.58 0-14.2 3.65-25.56 10.95-34.08 7.3-8.52 16.51-12.85 27.63-13 4.57 0 9.87 1.15 15.9 3.45 6.03 2.3 9.93 3.45 11.71 3.45 1.53 0 5.59-1.22 12.19-3.67 6.59-2.45 12.39-3.56 17.4-3.34 19.34 1.3 33.64 8.78 42.9 22.44-16.71 10.11-24.87 24.36-24.47 42.75.38 14.15 5.86 25.47 16.44 33.95 4.71 3.82 10.3 6.46 16.78 7.92-2.3 6.78-5.25 13.5-8.86 20.16zM119.22 31.95c0-7.79 2.82-15.01 8.46-21.66 5.64-6.65 12.82-10.42 21.54-11.3 0 1.25-.13 2.65-.38 4.2-.25 1.55-.51 3.01-.78 4.38-2.55 10.37-7.8 18.52-15.75 24.46-7.95 5.94-15.43 9.07-22.44 9.38-.13-1.15-.19-2.35-.19-3.6 0-1.85.03-3.9.09-6.16z"/></svg>
+                        <span class="text-xs font-bold uppercase tracking-widest">04 / Mahsulot Ekotizimi va Walled Garden</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Bir-birini To'ldiruvchi Ekotizim</h2>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed mb-3">Apple mahsulotlari o'zaro shunchalik mukammal bog'langanki, foydalanuvchi bitta qurilmadan boshqasiga (masalan, iPhone'dan Mac'ga yoki AirPods'ga) hech qanday qiyinchiliksiz o'tadi.</p>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed mb-3">iCloud sinxronizatsiyasi, AirDrop va Handoff kabi texnologiyalar mijozlarni boshqa brendlarga o'tib ketishidan himoya qiladi (Switching Cost juda yuqori).</p>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed">Bu yopiq ekotizim strategiyasi kompaniya daromadining barqarorligini ta'minlaydi.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: TARGET AUDIENCE & SEGMENTATION -->
+        <section class="slide apple-pattern bg-neutral-950">
+            <div class="max-w-6xl mx-auto w-full z-10 animate-fade">
+                <div class="flex items-center space-x-2 text-appleBlue mb-3">
+                    <svg class="w-5 h-5 fill-appleBlue" viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.91-14.43-6.11-3.69-3.04-7.74-7.85-12.16-14.43-6.52-9.77-11.77-20.57-15.76-32.39-3.99-11.82-5.99-23.01-5.99-33.58 0-14.2 3.65-25.56 10.95-34.08 7.3-8.52 16.51-12.85 27.63-13 4.57 0 9.87 1.15 15.9 3.45 6.03 2.3 9.93 3.45 11.71 3.45 1.53 0 5.59-1.22 12.19-3.67 6.59-2.45 12.39-3.56 17.4-3.34 19.34 1.3 33.64 8.78 42.9 22.44-16.71 10.11-24.87 24.36-24.47 42.75.38 14.15 5.86 25.47 16.44 33.95 4.71 3.82 10.3 6.46 16.78 7.92-2.3 6.78-5.25 13.5-8.86 20.16zM119.22 31.95c0-7.79 2.82-15.01 8.46-21.66 5.64-6.65 12.82-10.42 21.54-11.3 0 1.25-.13 2.65-.38 4.2-.25 1.55-.51 3.01-.78 4.38-2.55 10.37-7.8 18.52-15.75 24.46-7.95 5.94-15.43 9.07-22.44 9.38-.13-1.15-.19-2.35-.19-3.6 0-1.85.03-3.9.09-6.16z"/></svg>
+                    <span class="text-xs font-bold uppercase tracking-widest">05 / Maqsadli Bozor va Segmentatsiya</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Mijozlar Segmentatsiyasi va Pozitsiyalash</h2>
+                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2">1. Ijodiy Sanoat Vakillari</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Dizaynerlar, fotograf va videograflar. MacBook Pro va Mac Studio kabi kuchli ish qurollarining asosiy xaridorlari.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2">2. Yuqori Daromadli Segment</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Status, imij va eng yuqori sifatni qadrlaydigan top-menejerlar hamda tadbirkorlar (iPhone Pro Max).</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2">3. Yoshlar va Talabalar</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Ta'lim sohasidagilar, zamonaviy uslubni va qulay ekotizimni sevuvchi faol yosh avlod.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Team working" class="rounded-2xl w-full h-36 object-cover shadow-lg floating">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Developer MacBook" class="rounded-2xl w-full h-36 object-cover shadow-lg floating" style="animation-delay: 1.5s;">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="Meeting Apple" class="rounded-2xl w-full h-36 object-cover shadow-lg floating" style="animation-delay: 3s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6: SWOT - STRENGTHS -->
+        <section class="slide apple-pattern bg-black">
+            <div class="max-w-6xl mx-auto w-full z-10 animate-fade">
+                <div class="flex items-center space-x-2 text-green-400 mb-3">
+                    <svg class="w-5 h-5 fill-green-400" viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.91-14.43-6.11-3.69-3.04-7.74-7.85-12.16-14.43-6.52-9.77-11.77-20.57-15.76-32.39-3.99-11.82-5.99-23.01-5.99-33.58 0-14.2 3.65-25.56 10.95-34.08 7.3-8.52 16.51-12.85 27.63-13 4.57 0 9.87 1.15 15.9 3.45 6.03 2.3 9.93 3.45 11.71 3.45 1.53 0 5.59-1.22 12.19-3.67 6.59-2.45 12.39-3.56 17.4-3.34 19.34 1.3 33.64 8.78 42.9 22.44-16.71 10.11-24.87 24.36-24.47 42.75.38 14.15 5.86 25.47 16.44 33.95 4.71 3.82 10.3 6.46 16.78 7.92-2.3 6.78-5.25 13.5-8.86 20.16zM119.22 31.95c0-7.79 2.82-15.01 8.46-21.66 5.64-6.65 12.82-10.42 21.54-11.3 0 1.25-.13 2.65-.38 4.2-.25 1.55-.51 3.01-.78 4.38-2.55 10.37-7.8 18.52-15.75 24.46-7.95 5.94-15.43 9.07-22.44 9.38-.13-1.15-.19-2.35-.19-3.6 0-1.85.03-3.9.09-6.16z"/></svg>
+                    <span class="text-xs font-bold uppercase tracking-widest">06 / SWOT Tahlili — Strengths (Kuchli Tomonlar)</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Kompaniyaning Ichki Ustunliklari</h2>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-green-500">
+                        <h3 class="text-base font-bold text-white mb-2">1. Global Brend Qiymati</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Dunyoning №1 brendi sifatida iste'molchilar ongida shakllangan ulkan ishonch va emotsional sadoqat.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-green-500">
+                        <h3 class="text-base font-bold text-white mb-2">2. Apple Silicon Protsessorlari</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">M1, M2, M3 va M4 chiplari orqali energiya tejamkorligi va tezlik bo'yicha raqobatchilardan ustunlik.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-green-500">
+                        <h3 class="text-base font-bold text-white mb-2">3. Xizmatlar Ekotizimi (Services)</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">App Store, iCloud va Apple Music orqali har oy kelib turuvchi kafolatlangan takroriy daromad.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-green-500">
+                        <h3 class="text-base font-bold text-white mb-2">4. Yuqori Foyda Marjasi</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Premium narx siyosati tufayli texnologiya bozoridagi eng yuqori sof foyda ko'rsatkichi.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f4?auto=format&fit=crop&w=600&q=80" alt="MacBook setup" class="rounded-2xl w-full h-32 object-cover shadow-md floating">
+                    <img src="https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=600&q=80" alt="iPhone user" class="rounded-2xl w-full h-32 object-cover shadow-md floating" style="animation-delay: 2s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 7: SWOT - WEAKNESSES -->
+        <section class="slide apple-pattern bg-neutral-950">
+            <div class="max-w-6xl mx-auto w-full z-10 animate-fade">
+                <div class="flex items-center space-x-2 text-amber-400 mb-3">
+                    <svg class="w-5 h-5 fill-amber-400" viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.91-14.43-6.11-3.69-3.04-7.74-7.85-12.16-14.43-6.52-9.77-11.77-20.57-15.76-32.39-3.99-11.82-5.99-23.01-5.99-33.58 0-14.2 3.65-25.56 10.95-34.08 7.3-8.52 16.51-12.85 27.63-13 4.57 0 9.87 1.15 15.9 3.45 6.03 2.3 9.93 3.45 11.71 3.45 1.53 0 5.59-1.22 12.19-3.67 6.59-2.45 12.39-3.56 17.4-3.34 19.34 1.3 33.64 8.78 42.9 22.44-16.71 10.11-24.87 24.36-24.47 42.75.38 14.15 5.86 25.47 16.44 33.95 4.71 3.82 10.3 6.46 16.78 7.92-2.3 6.78-5.25 13.5-8.86 20.16zM119.22 31.95c0-7.79 2.82-15.01 8.46-21.66 5.64-6.65 12.82-10.42 21.54-11.3 0 1.25-.13 2.65-.38 4.2-.25 1.55-.51 3.01-.78 4.38-2.55 10.37-7.8 18.52-15.75 24.46-7.95 5.94-15.43 9.07-22.44 9.38-.13-1.15-.19-2.35-.19-3.6 0-1.85.03-3.9.09-6.16z"/></svg>
+                    <span class="text-xs font-bold uppercase tracking-widest">07 / SWOT Tahlili — Weaknesses (Zaif Tomonlar)</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ichki Cheklovlar va Zaif Nuqtalar</h2>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-amber-500">
+                        <h3 class="text-base font-bold text-white mb-2">1. Yuqori Narx Siyosati</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Qurilmalarning qimmatligi rivojlanayotgan mamlakatlarda bozor ulushini kengaytirishga to'sqinlik qiladi.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-amber-500">
+                        <h3 class="text-base font-bold text-white mb-2">2. iPhone'ga Haddan Tashqari Bog'liqlik</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Umumiy daromadning yarmidan ko'pi aynan iPhone savdosiga tayanadi, bu esa riskni oshiradi.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-amber-500">
+                        <h3 class="text-base font-bold text-white mb-2">3. Yopiq Ekotizim Cheklovlari</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Boshqa operatsion tizimlar bilan ma'lumot almashish va integratsiya qilishdagi qiyinchiliklar.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-amber-500">
+                        <h3 class="text-base font-bold text-white mb-2">4. Ta'minot Zanjiri Qaramligi</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Ishlab chiqarish quvvatlarining asosiy qismi Osiyo mintaqasida (Xitoy va Hindiston) joylashgani.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=600&q=80" alt="Apple store shoppers" class="rounded-2xl w-full h-32 object-cover shadow-md floating">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Tech accessories" class="rounded-2xl w-full h-32 object-cover shadow-md floating" style="animation-delay: 2s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: SWOT - OPPORTUNITIES -->
+        <section class="slide apple-pattern bg-black">
+            <div class="max-w-6xl mx-auto w-full z-10 animate-fade">
+                <div class="flex items-center space-x-2 text-blue-400 mb-3">
+                    <svg class="w-5 h-5 fill-blue-400" viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.91-14.43-6.11-3.69-3.04-7.74-7.85-12.16-14.43-6.52-9.77-11.77-20.57-15.76-32.39-3.99-11.82-5.99-23.01-5.99-33.58 0-14.2 3.65-25.56 10.95-34.08 7.3-8.52 16.51-12.85 27.63-13 4.57 0 9.87 1.15 15.9 3.45 6.03 2.3 9.93 3.45 11.71 3.45 1.53 0 5.59-1.22 12.19-3.67 6.59-2.45 12.39-3.56 17.4-3.34 19.34 1.3 33.64 8.78 42.9 22.44-16.71 10.11-24.87 24.36-24.47 42.75.38 14.15 5.86 25.47 16.44 33.95 4.71 3.82 10.3 6.46 16.78 7.92-2.3 6.78-5.25 13.5-8.86 20.16zM119.22 31.95c0-7.79 2.82-15.01 8.46-21.66 5.64-6.65 12.82-10.42 21.54-11.3 0 1.25-.13 2.65-.38 4.2-.25 1.55-.51 3.01-.78 4.38-2.55 10.37-7.8 18.52-15.75 24.46-7.95 5.94-15.43 9.07-22.44 9.38-.13-1.15-.19-2.35-.19-3.6 0-1.85.03-3.9.09-6.16z"/></svg>
+                    <span class="text-xs font-bold uppercase tracking-widest">08 / SWOT Tahlili — Opportunities (Imkoniyatlar)</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Kelajakdagi O'sish Imkoniyatlari</h2>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-blue-500">
+                        <h3 class="text-base font-bold text-white mb-2">1. Apple Intelligence (Sun'iy Intellekt)</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">AI imkoniyatlarini barcha qurilmalarga joriy qilish orqali yangi xaridorlarni jalb qilish.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-blue-500">
+                        <h3 class="text-base font-bold text-white mb-2">2. Fazoviy Hisoblash (Vision Pro)</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">AR/VR texnologiyalari bozorida yangi standartlarni o'rnatish va kengaytirish.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-blue-500">
+                        <h3 class="text-base font-bold text-white mb-2">3. Yangi Bozorlarga Kengayish</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Hindiston va Janubi-Sharqiy Osiyo kabi ulkan aholiga ega bozorlarda o'sish.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-blue-500">
+                        <h3 class="text-base font-bold text-white mb-2">4. Moliyaviy Xizmatlar Rivoji</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Apple Pay va Apple Card xizmatlarini global miqyosda ommalashtirish.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?auto=format&fit=crop&w=600&q=80" alt="Vision Pro AR" class="rounded-2xl w-full h-32 object-cover shadow-md floating">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80" alt="Tech Future" class="rounded-2xl w-full h-32 object-cover shadow-md floating" style="animation-delay: 2s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 9: SWOT - THREATS -->
+        <section class="slide apple-pattern bg-neutral-950">
+            <div class="max-w-6xl mx-auto w-full z-10 animate-fade">
+                <div class="flex items-center space-x-2 text-red-400 mb-3">
+                    <svg class="w-5 h-5 fill-red-400" viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.91-14.43-6.11-3.69-3.04-7.74-7.85-12.16-14.43-6.52-9.77-11.77-20.57-15.76-32.39-3.99-11.82-5.99-23.01-5.99-33.58 0-14.2 3.65-25.56 10.95-34.08 7.3-8.52 16.51-12.85 27.63-13 4.57 0 9.87 1.15 15.9 3.45 6.03 2.3 9.93 3.45 11.71 3.45 1.53 0 5.59-1.22 12.19-3.67 6.59-2.45 12.39-3.56 17.4-3.34 19.34 1.3 33.64 8.78 42.9 22.44-16.71 10.11-24.87 24.36-24.47 42.75.38 14.15 5.86 25.47 16.44 33.95 4.71 3.82 10.3 6.46 16.78 7.92-2.3 6.78-5.25 13.5-8.86 20.16zM119.22 31.95c0-7.79 2.82-15.01 8.46-21.66 5.64-6.65 12.82-10.42 21.54-11.3 0 1.25-.13 2.65-.38 4.2-.25 1.55-.51 3.01-.78 4.38-2.55 10.37-7.8 18.52-15.75 24.46-7.95 5.94-15.43 9.07-22.44 9.38-.13-1.15-.19-2.35-.19-3.6 0-1.85.03-3.9.09-6.16z"/></svg>
+                    <span class="text-xs font-bold uppercase tracking-widest">09 / SWOT Tahlili — Threats (Tahdidlar)</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Tashqi Xatarlar va Raqobat Muhiti</h2>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-red-500">
+                        <h3 class="text-base font-bold text-white mb-2">1. Shiddatli Raqobat</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Samsung, Google va Xiaomi kompaniyalarining kuchli Android flagmanlari bilan kurash.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-red-500">
+                        <h3 class="text-base font-bold text-white mb-2">2. Antimonopol Qonunchilik</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Yevropa Ittifoqi va AQSh organlarining App Store komissiyalari bo'yicha qattiq bosimlari.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-red-500">
+                        <h3 class="text-base font-bold text-white mb-2">3. Geosiyosiy Va Valyuta Risqlari</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Global inflyatsiya va AQSh-Xitoy munosabatlaridagi tangliklar ta'siri.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl border-l-4 border-red-500">
+                        <h3 class="text-base font-bold text-white mb-2">4. Kiberxavfsizlik va Maxfiylik</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Kiberxurujlar va ma'lumotlar sizib chiqishi bilan bog'liq global xatarlar.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Cyber security" class="rounded-2xl w-full h-32 object-cover shadow-md floating">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Global economy" class="rounded-2xl w-full h-32 object-cover shadow-md floating" style="animation-delay: 2s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 10: MARKETING MIX - PRODUCT -->
+        <section class="slide apple-pattern bg-black">
+            <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-10 items-center z-10 animate-fade">
+                <div>
+                    <div class="flex items-center space-x-2 text-appleBlue mb-3">
+                        <span class="text-xs font-bold uppercase tracking-widest">10 / Marketing Mix: Product (Mahsulot)</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Mahsulot Strategiyasi va Dizayn</h2>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed mb-3">Apple mahsulotlari funksionallik va estetikani o'zida mukammal mujassam etgan. Har bir qurilma foydalanuvchiga qulaylik va zavq berish uchun yaratiladi.</p>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed mb-3">Dizayn jarayonida ortiqcha detallardan voz kechilib, eng sof va tushunarli foydalanish tajribasi taqdim etiladi.</p>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed">Qadoqlashdan tortib dasturiy interfeysgacha bo'lgan barcha elementlar yagona brend standartiga bo'ysunadi.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=600&q=80" alt="iPhone Product" class="rounded-2xl w-full h-48 object-cover shadow-xl floating">
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80" alt="MacBook Product" class="rounded-2xl w-full h-48 object-cover shadow-xl mt-4 floating" style="animation-delay: 2s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 11: MARKETING MIX - PRICE -->
+        <section class="slide apple-pattern bg-neutral-950">
+            <div class="max-w-6xl mx-auto w-full z-10 animate-fade">
+                <div class="flex items-center space-x-2 text-applePurple mb-3">
+                    <span class="text-xs font-bold uppercase tracking-widest">11 / Marketing Mix: Price (Narx)</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Skimming va Premium Narx Siyosati</h2>
+                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2">Skimming Strategiyasi</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Yangi mahsulot chiqqanda eng yuqori narx belgilash va vaqt o'tishi bilan bosqichma-bosqich moslashtirish.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2">Eksklyuzivlik Tuyg'usi</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Qimmat narx xaridorlarda yuqori sifat, ishonchlilik va mavqega egalik hissiyotini shakllantiradi.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2">Moliyaviy Dasturlar</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Trade-In va qulay bo'lib to'lash (Installments) orqali xarid qilishni mijozlar uchun osonlashtirish.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=600&q=80" alt="Apple premium display" class="rounded-2xl w-full h-36 object-cover shadow-md floating">
+                    <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=600&q=80" alt="Apple store price tag" class="rounded-2xl w-full h-36 object-cover shadow-md floating" style="animation-delay: 2s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 12: MARKETING MIX - PLACE -->
+        <section class="slide apple-pattern bg-black">
+            <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-10 items-center z-10 animate-fade">
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=600&q=80" alt="Apple Store 1" class="rounded-2xl w-full h-48 object-cover shadow-xl floating">
+                    <img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=600&q=80" alt="Apple Store 2" class="rounded-2xl w-full h-48 object-cover shadow-xl mt-4 floating" style="animation-delay: 2s;">
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2 text-applePink mb-3">
+                        <span class="text-xs font-bold uppercase tracking-widest">12 / Marketing Mix: Place (Joylashuv)</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Apple Store va Omnichannel Tizim</h2>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed mb-3">Apple Store do'konlari dunyodagi eng muvaffaqiyatli chakana savdo nuqtalaridan biri hisoblanadi. Ular shunchaki mahsulot sotmaydi, balki brend muhitini to'liq his qildiradi.</p>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed mb-3">Shuningdek, Apple Online Store va vakolatli distribyutorlar tarmog'i (Authorized Resellers) orqali global qamrov ta'minlanadi.</p>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed">Mijoz istalgan nuqtadan bir xil premium xizmatni oladi.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 13: MARKETING MIX - PROMOTION -->
+        <section class="slide apple-pattern bg-neutral-950">
+            <div class="max-w-6xl mx-auto w-full z-10 animate-fade">
+                <div class="flex items-center space-x-2 text-appleBlue mb-3">
+                    <span class="text-xs font-bold uppercase tracking-widest">13 / Marketing Mix: Promotion (Ommalashtirish)</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Reklama, PR va Keynote Taqdimotlar</h2>
+                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2">Keynote Shoular</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Har bir yangi mahsulot namoyishi butun dunyo e'tiborini tortuvchi afsonaviy shouga aylantiriladi.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2">#ShotOniPhone</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Foydalanuvchilarning real suratlari orqali kamera imkoniyatlarini global reklama qilish.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2">Emotsional Roliklar</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Insonlarning hayotiy qadriyatlari va bayram kayfiyatiga asoslangan ta'sirli videolar.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="Apple presentation" class="rounded-2xl w-full h-36 object-cover shadow-md floating">
+                    <img src="https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=600&q=80" alt="Apple ad photography" class="rounded-2xl w-full h-36 object-cover shadow-md floating" style="animation-delay: 2s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 14: STP STRATEGY -->
+        <section class="slide apple-pattern bg-black">
+            <div class="max-w-6xl mx-auto w-full z-10 animate-fade">
+                <div class="flex items-center space-x-2 text-applePurple mb-3">
+                    <span class="text-xs font-bold uppercase tracking-widest">14 / STP Strategiyasi (Segmentation, Targeting, Positioning)</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Segmentatsiya, Targeting va Pozitsiyalash</h2>
+                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2 text-applePurple">1. Segmentation</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Bozorni demografik, kasbiy faoliyat va texnologik ehtiyojlarga ko'ra aniq guruhlarga ajratish.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2 text-appleBlue">2. Targeting</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Premium xaridorlar, ijodiy professionallar va ta'lim sohasidagi foydalanuvchilarga e'tibor qaratish.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-white mb-2 text-applePink">3. Positioning</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">"Eng xavfsiz, eng yuqori sifatli va dizaynda yetakchi brend" sifatida ongda o'rnashish.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="STP strategy team" class="rounded-2xl w-full h-36 object-cover shadow-md floating">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80" alt="Business planning" class="rounded-2xl w-full h-36 object-cover shadow-md floating" style="animation-delay: 2s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 15: FINANCIAL PERFORMANCE & BEAUTIFUL TABLE -->
+        <section class="slide apple-pattern bg-neutral-950">
+            <div class="max-w-6xl mx-auto w-full z-10 animate-fade">
+                <div class="flex items-center space-x-2 text-green-400 mb-2">
+                    <span class="text-xs font-bold uppercase tracking-widest">15 / Moliyaviy Tahlil va Daromadlar Jadvali</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Apple Inc. Moliyaviy Ko'rsatkichlari (2021–2024)</h2>
+                <p class="text-appleGrayText text-sm mb-6">Quyidagi jadvalda Apple kompaniyasining so'nggi yillardagi umumiy daromadlari va sof foydasi keltirilgan:</p>
+
+                <!-- BEAUTIFUL FINANCIAL TABLE -->
+                <div class="apple-glass rounded-3xl overflow-hidden shadow-2xl mb-6 border border-white/10">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-neutral-900/90 text-appleBlue text-xs uppercase tracking-wider border-b border-white/10">
+                                <th class="p-4">Yil</th>
+                                <th class="p-4">Umumiy Daromad (Revenue)</th>
+                                <th class="p-4">Sof Foyda (Net Income)</th>
+                                <th class="p-4">iPhone Ulushi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm divide-y divide-white/5 text-neutral-300">
+                            <tr class="hover:bg-white/5 transition">
+                                <td class="p-4 font-bold text-white">2021</td>
+                                <td class="p-4">$365.8 Billion</td>
+                                <td class="p-4">$94.68 Billion</td>
+                                <td class="p-4 text-green-400 font-semibold">52.2%</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition">
+                                <td class="p-4 font-bold text-white">2022</td>
+                                <td class="p-4">$394.3 Billion</td>
+                                <td class="p-4">$99.80 Billion</td>
+                                <td class="p-4 text-green-400 font-semibold">52.1%</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition">
+                                <td class="p-4 font-bold text-white">2023</td>
+                                <td class="p-4">$383.3 Billion</td>
+                                <td class="p-4">$97.00 Billion</td>
+                                <td class="p-4 text-green-400 font-semibold">52.3%</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition">
+                                <td class="p-4 font-bold text-white">2024</td>
+                                <td class="p-4">$391.0 Billion</td>
+                                <td class="p-4">$93.74 Billion</td>
+                                <td class="p-4 text-green-400 font-semibold">58.0%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 16: COMPETITOR ANALYSIS & LINE GRAPH -->
+        <section class="slide apple-pattern bg-black">
+            <div class="max-w-6xl mx-auto w-full z-10 animate-fade">
+                <div class="flex items-center space-x-2 text-appleBlue mb-2">
+                    <span class="text-xs font-bold uppercase tracking-widest">16 / Raqobat Muhiti va Bozor O'sish Grafigi</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Apple Bozor Kapitallashuvi O'sish Dinamikasi ($Billion)</h2>
+                <p class="text-appleGrayText text-sm mb-6">So'nggi yillarda Apple kompaniyasining global bozor qiymatining o'sish tendensiyasi (Line Graph):</p>
+
+                <!-- BEAUTIFUL SVG LINE GRAPH -->
+                <div class="apple-glass p-6 rounded-3xl shadow-2xl border border-white/10">
+                    <div class="h-56 w-full flex items-end justify-between px-4 pt-6 relative">
+                        <div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20 px-4">
+                            <div class="border-b border-white w-full"></div>
+                            <div class="border-b border-white w-full"></div>
+                            <div class="border-b border-white w-full"></div>
+                            <div class="border-b border-white w-full"></div>
+                        </div>
+
+                        <svg class="absolute inset-0 w-full h-full p-6 overflow-visible" preserveAspectRatio="none" viewBox="0 0 600 200">
+                            <defs>
+                                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#2997ff" stop-opacity="0.4"/>
+                                    <stop offset="100%" stop-color="#2997ff" stop-opacity="0.0"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M 50 160 L 200 120 L 350 80 L 500 30 L 500 180 L 50 180 Z" fill="url(#lineGrad)"/>
+                            <path d="M 50 160 L 200 120 L 350 80 L 500 30" fill="none" stroke="#2997ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="50" cy="160" r="6" fill="#ffffff" stroke="#2997ff" stroke-width="3"/>
+                            <circle cx="200" cy="120" r="6" fill="#ffffff" stroke="#2997ff" stroke-width="3"/>
+                            <circle cx="350" cy="80" r="6" fill="#ffffff" stroke="#2997ff" stroke-width="3"/>
+                            <circle cx="500" cy="30" r="6" fill="#ffffff" stroke="#2997ff" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <div class="flex justify-between text-xs text-appleGrayText px-4 mt-4 font-bold">
+                        <span>2020 ($2T)</span>
+                        <span>2021 ($2.5T)</span>
+                        <span>2022 ($2.8T)</span>
+                        <span>2024 ($3.4T+)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 17: FUTURE TRENDS & APPLE INTELLIGENCE -->
+        <section class="slide apple-pattern bg-neutral-950">
+            <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-10 items-center z-10 animate-fade">
+                <div>
+                    <div class="flex items-center space-x-2 text-applePurple mb-3">
+                        <span class="text-xs font-bold uppercase tracking-widest">17 / Kelajak Tendensiyalari va AI</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Apple Intelligence va AI Revolutsiyasi</h2>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed mb-3">Apple sun'iy intellekt texnologiyalarini foydalanuvchilarning maxfiyligini to'liq saqlagan holda qurilmaning o'zida (On-device AI) ishga tushirmoqda.</p>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed mb-3">Bu kelgusi yillarda yangi qurilmalarga bo'lgan talabni keskin oshiruvchi asosiy marketing drayveriga aylanadi.</p>
+                    <p class="text-appleGrayText text-sm md:text-base leading-relaxed">Fazoviy hisoblash va Vision Pro kelajakdagi interfeys standartlarini belgilaydi.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="AI futuristic" class="rounded-2xl w-full h-48 object-cover shadow-xl floating">
+                    <img src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?auto=format&fit=crop&w=600&q=80" alt="Vision Pro" class="rounded-2xl w-full h-48 object-cover shadow-xl mt-4 floating" style="animation-delay: 2s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 18: STRATEGIC RECOMMENDATIONS -->
+        <section class="slide apple-pattern bg-black">
+            <div class="max-w-6xl mx-auto w-full z-10 animate-fade">
+                <div class="flex items-center space-x-2 text-applePink mb-3">
+                    <span class="text-xs font-bold uppercase tracking-widest">18 / Strategik Tavsiyalar</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Marketingni Yanada Rivojlantirish Uchun Tavsiyalar</h2>
+                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                    <div class="apple-glass p-6 rounded-3xl transform hover:scale-105 transition duration-300">
+                        <h3 class="text-lg font-bold text-white mb-2">1. Arzon Modellar</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Rivojlanayotgan bozorlarda iPhone SE liniyasini kengaytirish orqali yangi qatlamni qamrab olish.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl transform hover:scale-105 transition duration-300">
+                        <h3 class="text-lg font-bold text-white mb-2">2. Ekologik Kampaniyalar</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">2030-yilgi uglerod neytrallik rejasini marketing va PR markaziga qo'yish.</p>
+                    </div>
+                    <div class="apple-glass p-6 rounded-3xl transform hover:scale-105 transition duration-300">
+                        <h3 class="text-lg font-bold text-white mb-2">3. Servis Integratsiyasi</h3>
+                        <p class="text-appleGrayText text-xs md:text-sm leading-relaxed">Apple Music va TV+ xizmatlarini yanada kengroq paketlar shaklida taklif qilish.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80" alt="Eco green" class="rounded-2xl w-full h-36 object-cover shadow-md floating">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80" alt="Strategy meeting" class="rounded-2xl w-full h-36 object-cover shadow-md floating" style="animation-delay: 2s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 19: CONCLUSION -->
+        <section class="slide apple-pattern bg-neutral-950 text-center">
+            <div class="max-w-4xl mx-auto z-10 animate-fade">
+                <svg class="w-16 h-16 mx-auto mb-4 fill-white floating drop-shadow-[0_0_20px_rgba(255,255,255,0.6)]" viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.91-14.43-6.11-3.69-3.04-7.74-7.85-12.16-14.43-6.52-9.77-11.77-20.57-15.76-32.39-3.99-11.82-5.99-23.01-5.99-33.58 0-14.2 3.65-25.56 10.95-34.08 7.3-8.52 16.51-12.85 27.63-13 4.57 0 9.87 1.15 15.9 3.45 6.03 2.3 9.93 3.45 11.71 3.45 1.53 0 5.59-1.22 12.19-3.67 6.59-2.45 12.39-3.56 17.4-3.34 19.34 1.3 33.64 8.78 42.9 22.44-16.71 10.11-24.87 24.36-24.47 42.75.38 14.15 5.86 25.47 16.44 33.95 4.71 3.82 10.3 6.46 16.78 7.92-2.3 6.78-5.25 13.5-8.86 20.16zM119.22 31.95c0-7.79 2.82-15.01 8.46-21.66 5.64-6.65 12.82-10.42 21.54-11.3 0 1.25-.13 2.65-.38 4.2-.25 1.55-.51 3.01-.78 4.38-2.55 10.37-7.8 18.52-15.75 24.46-7.95 5.94-15.43 9.07-22.44 9.38-.13-1.15-.19-2.35-.19-3.6 0-1.85.03-3.9.09-6.16z"/></svg>
+                <div class="flex items-center justify-center space-x-2 text-appleBlue mb-2">
+                    <span class="text-xs font-bold uppercase tracking-widest">19 / Xulosa</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Marketing Asosida Qurilgan Muvaffaqiyat</h2>
+                <p class="text-appleGrayText text-sm md:text-base leading-relaxed mb-6">Apple Inc. shunchaki texnologiya ishlab chiqarmaydi — u iste'molchilar turmush tarzi va estetik didini shakllantiradi. Kompaniyaning puxta o'ylangan marketing strategiyasi uni asr brendiga aylantirdi.</p>
+                <div class="grid grid-cols-3 gap-4">
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80" alt="Apple 1" class="rounded-2xl w-full h-32 object-cover shadow-lg floating">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="Apple 2" class="rounded-2xl w-full h-32 object-cover shadow-lg floating" style="animation-delay: 1.5s;">
+                    <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=600&q=80" alt="Apple 3" class="rounded-2xl w-full h-32 object-cover shadow-lg floating" style="animation-delay: 3s;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 20: Q&A / THANK YOU -->
+        <section class="slide apple-pattern bg-black text-center">
+            <div class="max-w-4xl mx-auto z-10 animate-fade">
+                <svg class="w-20 h-20 mx-auto mb-6 fill-white floating drop-shadow-[0_0_30px_rgba(255,255,255,0.8)]" viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.91-14.43-6.11-3.69-3.04-7.74-7.85-12.16-14.43-6.52-9.77-11.77-20.57-15.76-32.39-3.99-11.82-5.99-23.01-5.99-33.58 0-14.2 3.65-25.56 10.95-34.08 7.3-8.52 16.51-12.85 27.63-13 4.57 0 9.87 1.15 15.9 3.45 6.03 2.3 9.93 3.45 11.71 3.45 1.53 0 5.59-1.22 12.19-3.67 6.59-2.45 12.39-3.56 17.4-3.34 19.34 1.3 33.64 8.78 42.9 22.44-16.71 10.11-24.87 24.36-24.47 42.75.38 14.15 5.86 25.47 16.44 33.95 4.71 3.82 10.3 6.46 16.78 7.92-2.3 6.78-5.25 13.5-8.86 20.16zM119.22 31.95c0-7.79 2.82-15.01 8.46-21.66 5.64-6.65 12.82-10.42 21.54-11.3 0 1.25-.13 2.65-.38 4.2-.25 1.55-.51 3.01-.78 4.38-2.55 10.37-7.8 18.52-15.75 24.46-7.95 5.94-15.43 9.07-22.44 9.38-.13-1.15-.19-2.35-.19-3.6 0-1.85.03-3.9.09-6.16z"/></svg>
+                <div class="flex items-center justify-center space-x-2 text-applePink mb-2">
+                    <span class="text-xs font-bold uppercase tracking-widest">20 / Yakun va Savollar</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-4">E'tiboringiz Uchun Rahmat! </h2>
+                <p class="text-appleGrayText text-base md:text-lg mb-8">Savollaringiz bormi?</p>
+                <div class="grid grid-cols-3 gap-4 mb-8">
+                    <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80" alt="iPad final" class="rounded-2xl w-full h-32 object-cover shadow-lg floating">
+                    <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80" alt="Watch final" class="rounded-2xl w-full h-32 object-cover shadow-lg floating" style="animation-delay: 1.5s;">
+                    <img src="https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=600&q=80" alt="AirPods final" class="rounded-2xl w-full h-32 object-cover shadow-lg floating" style="animation-delay: 3s;">
+                    <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=600&q=80" alt="iPhone final" class="rounded-2xl w-full h-32 object-cover shadow-lg col-span-3 floating" style="animation-delay: 4.5s;">
+                </div>
+                <button onclick="goToSlide(0)" class="px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-neutral-200 transition shadow-2xl">Boshidan Boshlash</button>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JavaScript & Slide Control -->
+    <script>
+        const wrapper = document.getElementById('slide-wrapper');
+        const slides = document.querySelectorAll('.slide');
+        const currentSlideEl = document.getElementById('current-slide');
+        let currentIdx = 0;
+
+        wrapper.addEventListener('scroll', () => {
+            const index = Math.round(wrapper.scrollTop / window.innerHeight);
+            if (index !== currentIdx) {
+                currentIdx = index;
+                currentSlideEl.textContent = currentIdx + 1;
+            }
+        });
+
+        function nextSlide() {
+            if (currentIdx < slides.length - 1) {
+                currentIdx++;
+                slides[currentIdx].scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function prevSlide() {
+            if (currentIdx > 0) {
+                currentIdx--;
+                slides[currentIdx].scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function goToSlide(idx) {
+            currentIdx = idx;
+            slides[currentIdx].scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+                e.preventDefault();
+                nextString = nextSlide();
+            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+    </script>
+</body>
+</html>

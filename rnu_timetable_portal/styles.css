@@ -1,0 +1,55 @@
+body {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+}
+.academic-table th, .academic-table td {
+    border: 1px solid #64748b;
+}
+.day-divider {
+    border-bottom: 4px solid #1b365d !important;
+}
+.tab-pane {
+    display: none;
+}
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #printableArea, #printableArea * {
+        visibility: visible;
+    }
+    #printableArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+        box-shadow: none;
+        border: none;
+    }
+    .no-print, button, .validation-badge, .delete-btn {
+        display: none !important;
+    }
+    select {
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        font-weight: bold !important;
+        color: #000 !important;
+        width: 100% !important;
+        text-align: left !important;
+        font-size: 13px !important;
+    }
+    select::-ms-expand {
+        display: none !important;
+    }
+    .empty-slot-row {
+        display: none !important;
+    }
+}
